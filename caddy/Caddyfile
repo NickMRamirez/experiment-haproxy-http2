@@ -1,0 +1,4 @@
+:443
+tls self_signed
+log stdout
+errors stdout

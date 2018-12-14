@@ -1,0 +1,21 @@
+---
+version: "3"
+services:
+
+  web:
+    image: abiosoft/caddy
+    volumes:
+    - "./caddy/Caddyfile:/etc/Caddyfile"
+    ports:
+    - "8443:443"
+
+  haproxy:
+    image: haproxy:1.9-dev10
+    depends_on:
+    - web
+    ports:
+    - "80:80"
+    - "443:443"
+    - "8404:8404"
+    volumes:
+    - "./haproxy:/usr/local/etc/haproxy"
